@@ -6,10 +6,11 @@ class Pokemon:
     # Método construtor, usado para construir um objeto (Sempre executado quando inicializar)
     # nome=None --> Quer dizer que não é obrigatório definir uma valor para nome
     # O que colocar no cabeçalho sempre vai ser estatido, então nao setar o level aqui
-    def __init__(self, especie=None, level=None, nome=None):
+    def __init__(self, especie=None, level=None, nome=None, tipo=None):
         # self.alguma_coisa é quando nos referimos aos atributos desse objeto
         self.especie = especie
         self.level = level
+        self.tipo = tipo
         # Declarar nome
         if nome:
             self.nome = nome
@@ -27,6 +28,14 @@ class Pokemon:
     # Quando printamos um objeto, é isso que ele nos retorna de informação
     def __str__(self):
         return f"[Nv.{self.level}]{self.nome}[HP:{self.vida}]"
+
+    def gerar_pokemon(self):
+        if self.tipo == "Água":
+            return PokemonWater(self.nome)
+        elif self.tipo == "Fogo":
+            return PokemonFire(self.nome)
+        elif self.tipo == "Elétrico":
+            return PokemonEletric(self.nome)
 
     def ataque_min(self, ataque_efetivo):
         if int(ataque_efetivo) < 1:
@@ -61,7 +70,6 @@ class Pokemon:
 
 # Herança - Classe filha de Pokemon, onde recebe todas as caracteristicas de Pokemon
 class PokemonEletric(Pokemon):
-    tipo = "Elétrico"
 
     # Polimorfismo --> Mudar as classes fisicas da classe pai
     def atacar(self, pokemon):
@@ -71,7 +79,6 @@ class PokemonEletric(Pokemon):
 
 # Herança - Classe filha de Pokemon, onde recebe todas as caracteristicas de Pokemon
 class PokemonFire(Pokemon):
-    tipo = "Fogo"
 
     # Polimorfismo --> Mudar as classes fisicas da classe pai
     def atacar(self, pokemon):
@@ -80,7 +87,6 @@ class PokemonFire(Pokemon):
 
 
 class PokemonWater(Pokemon):
-    tipo = "Agua"
 
     # Polimorfismo --> Mudar as classes fisicas da classe pai
     def atacar(self, pokemon):

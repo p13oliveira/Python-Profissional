@@ -6,15 +6,11 @@ NOMES = [
 ]
 
 POKEMONS = [
-    PokemonFire("Vulpix"),
-    PokemonFire("Growlithe"),
-    PokemonFire("Rapidash"),
-    PokemonEletric("Magnemite"),
-    PokemonEletric("Voltorb"),
-    PokemonEletric("Electabuzz"),
-    PokemonWater("Magikarp"),
-    PokemonWater("Vaporeon"),
-    PokemonWater("Shellder"),
+    ['Charmander', 'Fogo'], ['Charmeleon', 'Fogo'], ['Charizard', 'Fogo'], ['Vulpix', 'Fogo'], ['Ninetales', 'Fogo'],
+    ['Growlithe', 'Fogo'], ['Arcanine', 'Fogo'], ['Ponyta', 'Fogo'], ['Squirtle', 'Água'], ['Wartortle', 'Água'],
+    ['Blastoise', 'Água'], ['Psyduck', 'Água'], ['Golduck', 'Água'], ['Tentacool', 'Água'], ['Tentacruel', 'Água'],
+    ['Pikachu', 'Elétrico'], ['Raichu', 'Elétrico'], ['Magnemite', 'Elétrico'], ['Magneton', 'Elétrico'],
+    ['Voltorb', 'Elétrico'], ['Eletrodo', 'Elétrico']
 ]
 
 
@@ -78,7 +74,7 @@ class Pessoa:
                 # Vitoria do player
                 if pokemon_aliado.atacar(pokemon_inimigo):
                     print(f"\n{self} ganhou a batalha pokemon!\n")
-                    self.recompensa_batalha(pokemon_inimigo.level * 100)
+                    self.recompensa_batalha(pokemon_inimigo.level * 10)
                     pokemon_aliado.vida = vida_inicial_aliado
                     pokemon_inimigo.vida = vida_inicial_inimigo
                     return False
@@ -123,7 +119,8 @@ class Player(Pessoa):
         if random.random() <= 0.3:
             if random.random() <= 0.5:
                 # Gerar pokemon aleatorio
-                pokemon = random.choice(POKEMONS)
+                tipo_pokemon = random.choice(POKEMONS)
+                pokemon = Pokemon(nome=tipo_pokemon[0], tipo=tipo_pokemon[1]).gerar_pokemon()
                 print(f"\nUm pokemon selvagem apareceu: {pokemon}")
                 # Capturar pokemon
                 escolha = input("Deseja capturar o pokemon? (s/n)\n")
@@ -153,19 +150,13 @@ class Inimigo(Pessoa):
         if not pokemons:
             pokemons_aleatorios = []
             # Gera de 1 a 3 Pokemons aleatórios
-            for i in range(random.randint(1, 3)):
-                pokemons_aleatorios.append(random.choice(POKEMONS))
+            for i in range(random.randint(1, 6)):
+                pokemon = random.choice(POKEMONS)
+                pokemons_aleatorios.append(Pokemon(nome=pokemon[0], tipo=pokemon[1]).gerar_pokemon())
             super().__init__(nome=nome, pokemons=pokemons_aleatorios)
         else:
             super().__init__(nome=nome, pokemons=pokemons)
 
 
 if __name__ == "__main__":
-    a = ["Pikachu", "Charizard", "Evee"]
-
-    for i in a:
-        print(PokemonFire(i))
-
-    print("---------------------")
-    for i in a:
-        print(PokemonFire(i))
+    Inimigo().mostrar_pokemons()
