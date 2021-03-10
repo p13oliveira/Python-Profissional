@@ -1,0 +1,11 @@
+API --> é uma interface de aplicação entre aplicativos, forma de como um programa se conecta com o outro, não importanto a
+        linguagem entre os programas
+
+API WEB --> Utiliza protocolo HTTP/HTTPS para fazer chamadas, ou seja, atravez da internet podemos se comunicar com
+            programar em um computador
+
+Existem 2 padroões --> REST(Json) e SOAP(xml)
+
+API ENDPOINTS --> Endereço para acessar uma função especifica da API
+
+https://restcountries.eu/#api-endpoints-all
