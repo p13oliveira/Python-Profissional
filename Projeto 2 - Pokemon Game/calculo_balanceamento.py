@@ -1,14 +1,14 @@
 # Calculo de ataque_inicial
 
-def ataque_minimo(ataque_efetivo, dano_ataque):
+"""def ataque_minimo(ataque_efetivo, dano_ataque):
     if ataque_efetivo == 0:
         return ataque_efetivo
     elif ataque_efetivo < dano_ataque:
         ataque_efetivo = dano_ataque + ataque_efetivo
-        return ataque_efetivo
+        return ataque_efetivo"""
 
 
-for i in range(1, 11):
+"""for i in range(1, 11):
     i = int(i)
     print(f"Pokemon Nv.{i}")
     ataque_inicial_minimo = int((3 * i) + (2 * i * 0.1))
@@ -26,7 +26,7 @@ for i in range(1, 11):
     print(f"Dano Minimo: {variacao_minima}")
     variacao_maxima = int(ataque_inicial_maximo * 1 * 1.3)
     print(f"Dano Minimo: {variacao_maxima}")
-    print("*******************************************")
+    print("*******************************************")"""
 
 # Calculo de vida_inicial
 """
